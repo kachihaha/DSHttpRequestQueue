@@ -1,5 +1,5 @@
 //
-//  DSHttpRequestQueue.h
+//  DSHttpRequestConnector.h
 //  DSHttpRequestQueue
 //
 //  Created by Adrain Sun on 11/14/14.
@@ -8,8 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DSHttpRequestQueue : NSObject
+@interface DSHttpRequestConnector : NSObject
 
-+ (instancetype)sharedInstance;
+//@property (nonatomic, strong)
 
 @end
