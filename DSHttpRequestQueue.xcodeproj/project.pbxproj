@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE2FCF051A24426400235309 /* DSHttpConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2FCF041A24426400235309 /* DSHttpConnector.m */; };
 		BE6ED6101A15D77000D7C2D8 /* DSHttpResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6ED60F1A15D77000D7C2D8 /* DSHttpResponse.m */; };
-		BE6ED6131A15D90400D7C2D8 /* DSHttpRequestConnector.m in Sources */ = {isa = PBXBuildFile; fileRef = BE6ED6121A15D90400D7C2D8 /* DSHttpRequestConnector.m */; };
 		BE7434C21A15CC08002AF730 /* DSHttpRequestQueue.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = BE7434C11A15CC08002AF730 /* DSHttpRequestQueue.h */; };
 		BE7434C41A15CC08002AF730 /* DSHttpRequestQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7434C31A15CC08002AF730 /* DSHttpRequestQueue.m */; };
 		BE7434CA1A15CC08002AF730 /* libDSHttpRequestQueue.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BE7434BE1A15CC08002AF730 /* libDSHttpRequestQueue.a */; };
@@ -42,10 +42,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BE2FCF031A24426400235309 /* DSHttpConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSHttpConnector.h; sourceTree = "<group>"; };
+		BE2FCF041A24426400235309 /* DSHttpConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSHttpConnector.m; sourceTree = "<group>"; };
 		BE6ED60E1A15D77000D7C2D8 /* DSHttpResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSHttpResponse.h; sourceTree = "<group>"; };
 		BE6ED60F1A15D77000D7C2D8 /* DSHttpResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSHttpResponse.m; sourceTree = "<group>"; };
-		BE6ED6111A15D90400D7C2D8 /* DSHttpRequestConnector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSHttpRequestConnector.h; sourceTree = "<group>"; };
-		BE6ED6121A15D90400D7C2D8 /* DSHttpRequestConnector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSHttpRequestConnector.m; sourceTree = "<group>"; };
 		BE7434BE1A15CC08002AF730 /* libDSHttpRequestQueue.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libDSHttpRequestQueue.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE7434C11A15CC08002AF730 /* DSHttpRequestQueue.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DSHttpRequestQueue.h; sourceTree = "<group>"; };
 		BE7434C31A15CC08002AF730 /* DSHttpRequestQueue.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DSHttpRequestQueue.m; sourceTree = "<group>"; };
@@ -149,8 +149,8 @@
 		BE7434DF1A15CC52002AF730 /* Connector */ = {
 			isa = PBXGroup;
 			children = (
-				BE6ED6111A15D90400D7C2D8 /* DSHttpRequestConnector.h */,
-				BE6ED6121A15D90400D7C2D8 /* DSHttpRequestConnector.m */,
+				BE2FCF031A24426400235309 /* DSHttpConnector.h */,
+				BE2FCF041A24426400235309 /* DSHttpConnector.m */,
 			);
 			name = Connector;
 			sourceTree = "<group>";
@@ -254,7 +254,7 @@
 			files = (
 				BE6ED6101A15D77000D7C2D8 /* DSHttpResponse.m in Sources */,
 				BE7434E31A15CD33002AF730 /* DSHttpRequest.m in Sources */,
-				BE6ED6131A15D90400D7C2D8 /* DSHttpRequestConnector.m in Sources */,
+				BE2FCF051A24426400235309 /* DSHttpConnector.m in Sources */,
 				BE7434C41A15CC08002AF730 /* DSHttpRequestQueue.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

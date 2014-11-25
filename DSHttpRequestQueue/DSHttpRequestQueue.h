@@ -8,8 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DSHttpRequestQueue : NSObject
+#import "DSHttpRequest.h"
+
+#define kMaxConnectionNum   10
+
+@interface DSHttpRequestQueue : NSObject {
+    dispatch_source_t _worker;
+    NSMutableArray *_connectionQueue;
+    dispatch_semaphore_t _connectNumControl;
+}
 
 + (instancetype)sharedInstance;
+
+- (BOOL)cancelAllRequest;
+- (BOOL)cancelRequest:(DSHttpRequest *)request;
+- (BOOL)isRequestExist:(DSHttpRequest *)request;
+- (BOOL)sendHttpRequest:(DSHttpRequest *)request;
+- (BOOL)sendBarrierHttpRequests:(NSMutableArray *)requests;
 
 @end

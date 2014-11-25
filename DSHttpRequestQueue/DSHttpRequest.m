@@ -10,13 +10,14 @@
 
 @implementation DSHttpRequest
 
-+ (instancetype)requestWithURL:(NSURL *)url connectionType:(DSHttpConnectionType)type header:(NSDictionary *)header data:(NSData *)data response:(DSHTTPConnectionResponse)response
++ (instancetype)requestWithURL:(NSURL *)url connectionType:(DSHttpConnectionMethod)method header:(NSDictionary *)header data:(NSData *)data dataType:(NSString *)dataType response:(DSHTTPConnectionResponse)response
 {
     DSHttpRequest *_instance = [[DSHttpRequest alloc]init];
     [_instance setUrl:url];
-    [_instance setConnectionType:type];
     [_instance setData:data];
+    [_instance setMethod:method];
     [_instance setHeader:header];
+    [_instance setDataType:dataType];
     [_instance setResponse:response];
     return _instance;
 }
@@ -29,7 +30,7 @@
         _data = nil;
         _header = nil;
         _response = nil;
-        _connectionType = DSHttpConnectionGet;
+        _method = DSHttpConnectionGet;
     }
     return self;
 }
