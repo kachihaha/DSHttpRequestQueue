@@ -10,7 +10,10 @@
 
 @interface DSHttpResponse : NSObject
 
-@property (nonatomic, strong) NSData *responseData;
-@property (nonatomic, strong) NSDictionary *httpBodyHeader;
+@property (nonatomic, strong) NSError *httpError;
+@property (nonatomic, strong) NSData *httpResponseData;
+@property (nonatomic, strong) NSURLResponse *httpURLResponse;
+
+- (instancetype)initWithData:(NSData *)data urlResponse:(NSURLResponse *)response error:(NSError *)error;
 
 @end

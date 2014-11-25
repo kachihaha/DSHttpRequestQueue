@@ -23,7 +23,8 @@
 - (BOOL)cancelAllRequest;
 - (BOOL)cancelRequest:(DSHttpRequest *)request;
 - (BOOL)isRequestExist:(DSHttpRequest *)request;
-- (BOOL)sendHttpRequest:(DSHttpRequest *)request;
-- (BOOL)sendBarrierHttpRequests:(NSMutableArray *)requests;
+
+- (void)sendHttpRequest:(DSHttpRequest *)request;
+- (void)sendBarrierHttpRequests:(NSMutableArray *)requests;
 
 @end

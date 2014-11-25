@@ -14,8 +14,20 @@
 {
     self = [super init];
     if (self) {
-        _responseData = nil;
-        _httpBodyHeader = nil;
+        _httpError = nil;
+        _httpURLResponse = nil;
+        _httpResponseData = nil;
+    }
+    return self;
+}
+
+- (instancetype)initWithData:(NSData *)data urlResponse:(NSURLResponse *)response error:(NSError *)error
+{
+    self = [super init];
+    if (self) {
+        [self setHttpError:error];
+        [self setHttpResponseData:data];
+        [self setHttpURLResponse:response];
     }
     return self;
 }

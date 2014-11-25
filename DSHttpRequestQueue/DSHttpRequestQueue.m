@@ -42,16 +42,21 @@ static DSHttpRequestQueue *instance = nil;
 - (void)checkRequests
 {
     if ([_connectionQueue count]) {
-        [_connectionQueue enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            if ([obj isKindOfClass:[DSHttpRequest class]]) {
-                dispatch_semaphore_signal(_connectNumControl);
-                [DSHttpConnector connectorWithRequest:obj status:^{
-                    dispatch_semaphore_wait(_connectNumControl, DISPATCH_TIME_FOREVER);
+        while ([_connectionQueue count]) {
+            id object = [_connectionQueue firstObject];
+            
+            if ([object isKindOfClass:[DSHttpRequest class]]) {
+                [DSHttpConnector connectorWithRequest:object status:^{
+                    [_connectionQueue removeObject:object];
+                    dispatch_semaphore_signal(_connectNumControl);
                 }];
-            } else if ([obj isKindOfClass:[NSArray class]]) {
-                
+            } else if ([object isKindOfClass:[NSMutableArray class]]) {
+                [DSHttpConnector connectorWithBarrierRequest:object status:^{
+                    dispatch_semaphore_signal(_connectNumControl);
+                }];
             }
-        }];
+            dispatch_semaphore_wait(_connectNumControl, DISPATCH_TIME_FOREVER);
+        }
     }
 }
 
@@ -72,15 +77,16 @@ static DSHttpRequestQueue *instance = nil;
     return [_connectionQueue containsObject:request];
 }
 
-- (BOOL)sendHttpRequest:(DSHttpRequest *)request
+- (void)sendHttpRequest:(DSHttpRequest *)request
 {
-    
-    return NO;
+    [_connectionQueue addObject:request];
+    dispatch_source_merge_data(_worker, 1);
 }
 
-- (BOOL)sendBarrierHttpRequests:(NSMutableArray *)requests
+- (void)sendBarrierHttpRequests:(NSMutableArray *)requests
 {
-    return NO;
+    [_connectionQueue addObject:requests];
+    dispatch_source_merge_data(_worker, 1);
 }
 
 @end

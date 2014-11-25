@@ -10,15 +10,17 @@
 
 @implementation DSHttpRequest
 
-+ (instancetype)requestWithURL:(NSURL *)url connectionType:(DSHttpConnectionMethod)method header:(NSDictionary *)header data:(NSData *)data dataType:(NSString *)dataType response:(DSHttpConnectionResponse)response
++ (instancetype)requestWithURL:(NSURL *)url connectionType:(DSHttpConnectionMethod)method header:(NSDictionary *)header data:(NSData *)data timeInterval:(NSTimeInterval)interval response:(DSHttpConnectionResponse)response
 {
     DSHttpRequest *_instance = [[DSHttpRequest alloc]init];
+    
     [_instance setUrl:url];
     [_instance setData:data];
     [_instance setMethod:method];
     [_instance setHeader:header];
-    [_instance setDataType:dataType];
     [_instance setResponse:response];
+    [_instance setTimeInterval:interval];
+    
     return _instance;
 }
 
@@ -30,6 +32,7 @@
         _data = nil;
         _header = nil;
         _response = nil;
+        _timeInterval = 10.0f;
         _method = DSHttpConnectionGet;
     }
     return self;

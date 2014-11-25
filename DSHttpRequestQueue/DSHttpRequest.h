@@ -17,17 +17,17 @@ typedef enum {
     DSHttpConnectionPut,
 } DSHttpConnectionMethod;
 
-typedef void(^DSHttpConnectionResponse)(DSHttpResponse *responseData, NSError *error);
+typedef void(^DSHttpConnectionResponse)(DSHttpResponse *responseData);
 
 @interface DSHttpRequest : NSObject
 
 @property (nonatomic, strong) NSURL *url;
 @property (nonatomic, strong) NSData *data;
-@property (nonatomic, strong) NSString *dataType;
 @property (nonatomic, strong) NSDictionary *header;
+@property (nonatomic, assign) NSTimeInterval timeInterval;
 @property (nonatomic, assign) DSHttpConnectionMethod method;
 @property (nonatomic, copy) DSHttpConnectionResponse response;
 
-+ (instancetype)requestWithURL:(NSURL *)url connectionType:(DSHttpConnectionMethod)method header:(NSDictionary *)header data:(NSData *)data dataType:(NSString *)dataType response:(DSHttpConnectionResponse)response;
++ (instancetype)requestWithURL:(NSURL *)url connectionType:(DSHttpConnectionMethod)method header:(NSDictionary *)header data:(NSData *)data timeInterval:(NSTimeInterval)interval response:(DSHttpConnectionResponse)response;
 
 @end

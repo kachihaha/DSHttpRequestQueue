@@ -15,5 +15,6 @@ typedef void(^DSHttpConnectorFinish)(void);
 @interface DSHttpConnector : NSObject
 
 + (void)connectorWithRequest:(DSHttpRequest *)request status:(DSHttpConnectorFinish)status;
++ (void)connectorWithBarrierRequest:(NSArray *)requests status:(DSHttpConnectorFinish)status;
 
 @end
