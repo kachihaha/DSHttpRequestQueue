@@ -17,7 +17,7 @@ typedef enum {
     DSHttpConnectionPut,
 } DSHttpConnectionMethod;
 
-typedef void(^DSHTTPConnectionResponse)(DSHttpResponse *responseData, NSError *error);
+typedef void(^DSHttpConnectionResponse)(DSHttpResponse *responseData, NSError *error);
 
 @interface DSHttpRequest : NSObject
 
@@ -26,8 +26,8 @@ typedef void(^DSHTTPConnectionResponse)(DSHttpResponse *responseData, NSError *e
 @property (nonatomic, strong) NSString *dataType;
 @property (nonatomic, strong) NSDictionary *header;
 @property (nonatomic, assign) DSHttpConnectionMethod method;
-@property (nonatomic, copy) DSHTTPConnectionResponse response;
+@property (nonatomic, copy) DSHttpConnectionResponse response;
 
-+ (instancetype)requestWithURL:(NSURL *)url connectionType:(DSHttpConnectionMethod)method header:(NSDictionary *)header data:(NSData *)data dataType:(NSString *)dataType response:(DSHTTPConnectionResponse)response;
++ (instancetype)requestWithURL:(NSURL *)url connectionType:(DSHttpConnectionMethod)method header:(NSDictionary *)header data:(NSData *)data dataType:(NSString *)dataType response:(DSHttpConnectionResponse)response;
 
 @end

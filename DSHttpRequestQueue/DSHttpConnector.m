@@ -10,4 +10,9 @@
 
 @implementation DSHttpConnector
 
++ (void)connectorWithRequest:(DSHttpRequest *)request status:(DSHttpConnectorFinish)status
+{
+    
+}
+
 @end

@@ -10,7 +10,7 @@
 
 @implementation DSHttpRequest
 
-+ (instancetype)requestWithURL:(NSURL *)url connectionType:(DSHttpConnectionMethod)method header:(NSDictionary *)header data:(NSData *)data dataType:(NSString *)dataType response:(DSHTTPConnectionResponse)response
++ (instancetype)requestWithURL:(NSURL *)url connectionType:(DSHttpConnectionMethod)method header:(NSDictionary *)header data:(NSData *)data dataType:(NSString *)dataType response:(DSHttpConnectionResponse)response
 {
     DSHttpRequest *_instance = [[DSHttpRequest alloc]init];
     [_instance setUrl:url];

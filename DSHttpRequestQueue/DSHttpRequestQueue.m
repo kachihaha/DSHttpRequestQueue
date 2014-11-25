@@ -8,6 +8,7 @@
 
 #import "DSHttpRequestQueue.h"
 
+#import "DSHttpConnector.h"
 
 @implementation DSHttpRequestQueue
 
@@ -29,7 +30,9 @@ static DSHttpRequestQueue *instance = nil;
         _connectionQueue = [[NSMutableArray alloc]init];
         _connectNumControl = dispatch_semaphore_create(kMaxConnectionNum);
         _worker = dispatch_source_create(DISPATCH_SOURCE_TYPE_DATA_ADD, 0, 0, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0));
-        dispatch_source_set_event_handler_f(_worker, <#dispatch_function_t handler#>)
+        dispatch_source_set_event_handler(_worker, ^{
+            [self checkRequests];
+        });
     }
     return self;
 }
@@ -38,17 +41,18 @@ static DSHttpRequestQueue *instance = nil;
 
 - (void)checkRequests
 {
-    
-}
-
-- (void)wakeupWorker
-{
-    
-}
-
-- (void)makeWorkerSleep
-{
-    
+    if ([_connectionQueue count]) {
+        [_connectionQueue enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+            if ([obj isKindOfClass:[DSHttpRequest class]]) {
+                dispatch_semaphore_signal(_connectNumControl);
+                [DSHttpConnector connectorWithRequest:obj status:^{
+                    dispatch_semaphore_wait(_connectNumControl, DISPATCH_TIME_FOREVER);
+                }];
+            } else if ([obj isKindOfClass:[NSArray class]]) {
+                
+            }
+        }];
+    }
 }
 
 #pragma mark - API methods
@@ -70,6 +74,7 @@ static DSHttpRequestQueue *instance = nil;
 
 - (BOOL)sendHttpRequest:(DSHttpRequest *)request
 {
+    
     return NO;
 }
 

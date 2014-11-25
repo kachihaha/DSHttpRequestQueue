@@ -8,6 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+#import "DSHttpRequest.h"
+
+typedef void(^DSHttpConnectorFinish)(void);
+
 @interface DSHttpConnector : NSObject
+
++ (void)connectorWithRequest:(DSHttpRequest *)request status:(DSHttpConnectorFinish)status;
 
 @end
